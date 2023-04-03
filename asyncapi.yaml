@@ -1,0 +1,60 @@
+asyncapi: 2.5.0
+
+info:
+  title: Example Service
+  version: '1.0.0'
+
+servers:
+  kafka-1:
+    url: random.org:9094
+    protocol: kafka
+    description: ''
+
+channels:
+  order-channel:
+    description: ''
+    publish:
+      message:
+        payload:
+          $ref: '#/components/schemas/Order'
+
+components:
+  schemas:
+    Order:
+      type: object
+      additionalProperties: false
+      required:
+        - line_item
+        - order_id
+      properties:
+        line_item:
+          $ref: '#/components/schemas/LineItem'
+        order_id:
+          type: string
+          format: uuid
+
+    LineItem:
+      description: ''
+      type: object
+      additionalProperties: false
+      required:
+        - line_item_id
+      properties:
+        line_item_id:
+          type: string
+          format: uuid
+        variant:
+          $ref: '#/components/schemas/ProductVariant'
+
+    ProductVariant:
+      description: ''
+      type: object
+      additionalProperties: false
+      required:
+        - product_id
+      properties:
+        product_id:
+          description: ''
+          type: string
+          format: uuid
+

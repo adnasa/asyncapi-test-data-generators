@@ -1,0 +1,9 @@
+node_modules
+test/temp
+output
+__transpiled
+
+# project
+template/consumers/$$channel$$.js
+template/.eslintrc
+package.json

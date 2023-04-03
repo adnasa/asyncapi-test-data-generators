@@ -1,0 +1,6 @@
+{
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "parser": "typescript",
+  "printWidth": 80
+}
