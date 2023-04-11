@@ -1,4 +1,4 @@
-import kebabCase from 'lodash.kebabcase';
+import { dash } from 'radash';
 import { File } from '@asyncapi/generator-react-sdk';
 
 export default function packageFile({ asyncapi }) {
@@ -16,7 +16,7 @@ export default function packageFile({ asyncapi }) {
   };
 
   if (asyncapi.info().title()) {
-    packageJSON.name = kebabCase(asyncapi.info().title());
+    packageJSON.name = dash(asyncapi.info().title());
   }
   if (asyncapi.info().version()) {
     packageJSON.version = asyncapi.info().version();

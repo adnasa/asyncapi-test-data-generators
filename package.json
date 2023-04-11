@@ -30,6 +30,7 @@
     "@asyncapi/generator-react-sdk": "^0.2.23",
     "eslint-plugin-import": "^2.27.5",
     "puppeteer": "^5.2.1",
+    "radash": "^10.8.1",
     "yaml-to-json-schema": "^1.0.2"
   },
   "release": {
@@ -76,9 +77,6 @@
     "@babel/preset-react": "^7.14.5",
     "@changesets/cli": "^2.26.0",
     "@types/common-tags": "^1.8.1",
-    "@types/lodash.camelcase": "^4.3.7",
-    "@types/lodash.kebabcase": "^4.1.7",
-    "@types/lodash.snakecase": "^4.1.7",
     "all-contributors-cli": "^6.19.0",
     "changeset": "^0.2.6",
     "common-tags": "^1.8.2",
@@ -89,9 +87,6 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-sonarjs": "^0.5.0",
     "jest": "^27.2.5",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.kebabcase": "^4.1.1",
-    "lodash.snakecase": "^4.1.1",
     "markdown-toc": "^1.2.0",
     "prettier": "^2.8.7",
     "rimraf": "^3.0.2"

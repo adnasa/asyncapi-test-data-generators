@@ -2,8 +2,7 @@
 import { Schema } from '@asyncapi/parser';
 import { File } from '@asyncapi/generator-react-sdk';
 import { oneLine, stripIndents } from 'common-tags';
-import kebabCase from 'lodash.kebabcase';
-import camelCase from 'lodash.camelcase';
+import { dash, camel } from 'radash';
 
 const parserSchemaName = 'x-parser-schema-id';
 /**
@@ -56,7 +55,7 @@ const renderSchemaByProperty = ({ schemaName, property }) => {
   if (propertyType === 'object') {
     return oneLine`
       ${name}: 
-      ${camelCase(`create ${propertySchema.extension(parserSchemaName)}`)}()
+      ${camel(`create ${propertySchema.extension(parserSchemaName)}`)}()
     `;
   }
   return null;
@@ -71,7 +70,7 @@ const renderSchema = (schemaRenderParams) => {
   const typeImport = oneLine`
     import type
     { ${schemaRenderParams.schemaName} }
-    from '../schemas/${kebabCase(schemaRenderParams.schemaName)}'
+    from '../schemas/${dash(schemaRenderParams.schemaName)}'
   `;
 
   const extensionTestGeneratorImport = Object.values(properties)
@@ -79,14 +78,14 @@ const renderSchema = (schemaRenderParams) => {
     .map((value) => value.extension(parserSchemaName))
     .map(
       (extension) => oneLine`
-          import ${camelCase(`create ${extension}`)}
+          import ${camel(`create ${extension}`)}
           from
-          './${kebabCase(extension)}'
+          './${dash(extension)}'
         `
     )
     .join('\n');
 
-  const functionName = camelCase(oneLine`
+  const functionName = camel(oneLine`
     create test ${schemaRenderParams.schemaName}
   `);
 
@@ -101,7 +100,7 @@ const renderSchema = (schemaRenderParams) => {
     .join(',\n');
 
   return (
-    <File name={`${kebabCase(schemaRenderParams.schemaName)}.ts`}>
+    <File name={`${dash(schemaRenderParams.schemaName)}.ts`}>
       {stripIndents`
         import { faker } from '@faker-js/faker'
 

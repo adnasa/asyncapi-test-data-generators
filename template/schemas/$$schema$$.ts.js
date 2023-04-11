@@ -2,7 +2,7 @@
 import { Schema } from '@asyncapi/parser';
 import { File } from '@asyncapi/generator-react-sdk';
 import { oneLine, stripIndents } from 'common-tags';
-import kebabCase from 'lodash.kebabcase';
+import { dash } from 'radash';
 
 const parserSchemaName = 'x-parser-schema-id';
 
@@ -59,7 +59,7 @@ const renderSchema = (schemaRenderParams) => {
         type
         { ${extension} }
         from 
-        './${kebabCase(extension)}'
+        './${dash(extension)}'
       `
     )
     .join('\n');
@@ -75,7 +75,7 @@ const renderSchema = (schemaRenderParams) => {
     .join(';\n');
 
   return (
-    <File name={`${kebabCase(schemaRenderParams.schemaName)}.ts`}>
+    <File name={`${dash(schemaRenderParams.schemaName)}.ts`}>
       {stripIndents`
         ${extensionImports}
 
